@@ -30,13 +30,6 @@ jobs:
       - name: Setup Dependencies
         run: |
           bun install
-      - name: Prettier Format
-        run: |
-          bunx prettier@latest --plugin=prettier-plugin-organize-imports --config .prettierrc --write src docs 'test/**.{test,spec}.{ts,tsx,js,jsx,mts,mjs,cjs,cts}' packages/bun-*
-      - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "`bun run prettier:extra`"
       - name: Install LLVM
         run: |
           curl -fsSL https://apt.llvm.org/llvm.sh | sudo bash -s -- ${{ env.LLVM_VERSION_MAJOR }} all
@@ -47,6 +40,13 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "`bun run zig-format`"
+      - name: Prettier Format
+        run: |
+          bunx prettier@latest --plugin=prettier-plugin-organize-imports --config .prettierrc --write src docs 'test/**.{test,spec}.{ts,tsx,js,jsx,mts,mjs,cjs,cts}' packages/bun-*
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "`bun run prettier:extra`"
       - name: Clang Format
         run: |
           bun run clang-format
