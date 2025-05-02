@@ -2,7 +2,7 @@
 
 This mock implementation of the [epoll/socket](https://en.wikipedia.org/wiki/Epoll) syscalls allows you to test intricate edge cases and find bugs in mission critical software - all within minutes. It builds on LLVM's [libFuzzer](http://llvm.org/docs/LibFuzzer.html) and operates based on nothing but fuzz data, being entirely deterministic and reproducible.
 
-Where [syzkaller](https://github.com/google/syzkaller) is a *user space process* fuzzing the **kernel**, libEpollFuzzer is mocking the *kernel* and fuzzing the **user space process**.
+Where [syzkaller](https://github.com/google/syzkaller) is a _user space process_ fuzzing the **kernel**, libEpollFuzzer is mocking the _kernel_ and fuzzing the **user space process**.
 
 ## Can you find the bug?
 
@@ -27,6 +27,7 @@ int length = recv(buf, 24234234);
 gif here of finding the bug
 
 ## A more complex case
+
 Fuzzing the entire uSockets library takes no more than a few linker flags. Other libraries that may benefit from fuzzing include libuv, libev, libevent, ASIO and the like.
 
 ## How it works
